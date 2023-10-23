@@ -1,4 +1,4 @@
-name: ShieldBearer CI/CD
+name: Env-Handler CI/CD
 
 on:
   push:
@@ -28,6 +28,3 @@ jobs:
       uses: codecov/codecov-action@v3
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-    - name: Set execute permission for the script
-      run: chmod +x ./upload_coverage.sh
