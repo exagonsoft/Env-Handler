@@ -39,5 +39,8 @@
     "mocha": "^10.2.0",
     "mock-require": "^3.0.3",
     "nyc": "^15.1.0"
+  },
+  "optionalDependencies": {
+    "node-gyp": "^8.3.0"
   }
 }
