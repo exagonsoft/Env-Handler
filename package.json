@@ -23,7 +23,7 @@
   ],
   "author": "Alvaro R Martin",
   "license": "MIT",
-  "gypfile": true,
+  "gypfile": false,
   "bugs": {
     "url": "https://github.com/exagonsoft/Env-Handler/issues"
   },
