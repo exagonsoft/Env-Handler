@@ -18,6 +18,9 @@ jobs:
       with:
         node-version: 20.7.0
 
+    - name: Install Global Dependencies
+      run: npm install -g node-gyp
+
     - name: Install dependencies
       run: npm install
 
