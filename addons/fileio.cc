@@ -4,21 +4,26 @@
 
 void ReadFile(const v8::FunctionCallbackInfo<v8::Value>& args) {
   v8::Isolate* isolate = args.GetIsolate();
-  if (args.Length() != 1) {
-    isolate->ThrowException(v8::Exception::TypeError(
-        v8::String::NewFromUtf8(isolate, "Wrong number of arguments")));
-    return;
-  }
 
-  v8::String::Utf8Value filename(args[0]->ToString());
-  std::ifstream file(*filename);
-  if (file.is_open()) {
-    std::string content((std::istreambuf_iterator<char>(file)),
-                        std::istreambuf_iterator<char>());
-    args.GetReturnValue().Set(v8::String::NewFromUtf8(isolate, content.c_str()));
-  } else {
+  try {
+    if (args.Length() != 1 || !args[0]->IsString()) {
+      throw std::runtime_error("Wrong arguments");
+    }
+
+    v8::String::Utf8Value filename(isolate, args[0]);
+    std::ifstream file(*filename, std::ios::in | std::ios::binary); // Open the file in binary mode
+
+    if (file.is_open()) {
+      std::string content((std::istreambuf_iterator<char>(file)),
+                          std::istreambuf_iterator<char>());
+      args.GetReturnValue().Set(v8::String::NewFromUtf8(isolate, content.c_str()).ToLocalChecked());
+    } else {
+      args.GetReturnValue().Set(v8::Undefined(isolate)); // Return undefined if file cannot be opened
+    }
+  } catch (const std::exception& e) {
+    // Handle exceptions and throw them as V8 exceptions
     isolate->ThrowException(v8::Exception::Error(
-        v8::String::NewFromUtf8(isolate, "Failed to open the file")));
+        v8::String::NewFromUtf8(isolate, e.what()).ToLocalChecked()));
   }
 }
 

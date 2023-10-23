@@ -1,11 +1,11 @@
-const { getEOL } = require('./utils/utilFunctions');
-const fs = require('fs');
+const getEOL = require('./utils/utilFunctions');
+const fileio = require('./build/Release/fileio.node');
 
 function loadEnvVariables(filePath) {
   try {
     const EOL = getEOL();
-    const envFile = fs.readFileSync(filePath, 'utf8');
-    const lines = envFile.split(EOL);
+    const envFileContent = fileio.readFile(filePath);
+    const lines = envFileContent.split(EOL);
 
     lines.forEach((line) => {
       const [key, value] = line.split('=');
