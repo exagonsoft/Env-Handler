@@ -1,5 +1,5 @@
 const getEOL = require('./utils/utilFunctions');
-const fileio = require('./build/Release/fileio.node');
+const fileio = require('./libs/fileio.node');
 
 function loadEnvVariables(filePath) {
   try {

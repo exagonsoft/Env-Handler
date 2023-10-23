@@ -30,8 +30,7 @@
   "homepage": "https://github.com/exagonsoft/Env-Handler#readme",
   "files": [
     "index.js",
-    "build/*.*",
-    "build/Release/*.*",
+    "libs",
     "utils/*.js"
   ],
   "devDependencies": {
