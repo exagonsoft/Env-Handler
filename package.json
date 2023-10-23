@@ -4,8 +4,7 @@
   "description": "Env-Handler is a lightweight and efficient Node.js module designed to simplify environment variable management in your applications.",
   "main": "env-handler.js",
   "scripts": {
-    "test": "nyc mocha test",
-    "install": "node-gyp rebuild"
+    "test": "nyc mocha tests/*.js && nyc report --reporter=lcov"
   },
   "repository": {
     "type": "git",
@@ -23,7 +22,7 @@
   ],
   "author": "Alvaro R Martin",
   "license": "MIT",
-  "gypfile": true,
+  "gypfile": false,
   "bugs": {
     "url": "https://github.com/exagonsoft/Env-Handler/issues"
   },

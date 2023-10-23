@@ -9,7 +9,7 @@ beforeEach(() => {
 
 describe('loadEnv', () => {
   it('should load environment variables from a file', () => {
-    const env = loadEnv({ path: './test/.env' });
+    const env = loadEnv({ path: './tests/.env' });
     expect(env.PORT).to.equal('3000');
   });
 
